@@ -1,0 +1,142 @@
+.properties-page {
+  min-height: 100vh;
+  padding: 24px 0;
+  background-color: #f5f5f5;
+}
+
+.properties-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.view-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.filters-section {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.properties-container {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.properties-list {
+  flex: 1;
+  max-width: 800px;
+}
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.property-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.property-card {
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.property-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.property-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.map-container {
+  flex: 1;
+  min-height: 600px;
+  position: sticky;
+  top: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 16px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 24px;
+  color: #d32f2f;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  padding: 16px;
+}
+
+.info-window {
+  padding: 16px;
+  min-width: 200px;
+}
+
+.info-window h6 {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 960px) {
+  .properties-container {
+    flex-direction: column;
+  }
+
+  .map-container {
+    position: relative;
+    top: 0;
+    min-height: 400px;
+  }
+
+  .properties-list {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .properties-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .property-grid {
+    grid-template-columns: 1fr;
+  }
+} 

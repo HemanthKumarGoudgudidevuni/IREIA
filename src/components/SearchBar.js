@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../styles/SearchBar.css';
-import { useNavigate } from 'react-router-dom';
 
 const SearchBar = ({ onSearch }) => {
   const [searchParams, setSearchParams] = useState({
@@ -12,7 +11,6 @@ const SearchBar = ({ onSearch }) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,26 +22,16 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!searchParams.zipcode.trim()) {
-      alert("Please enter a zipcode.");
-      return;
-    }
-
+    setError(null);
     setIsLoading(true);
+
     try {
-      const response = await fetch('http://127.0.0.1:5001/api/predict', {
+      const response = await fetch('http://localhost:5001/api/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          zipcode: searchParams.zipcode.trim(),
-          bedrooms: parseInt(searchParams.bedrooms) || 2,
-          bathrooms: parseInt(searchParams.bathrooms) || 1,
-          propertyType: searchParams.propertyType || 'SINGLE_FAMILY',
-          livingArea: parseInt(searchParams.livingArea) || 1000
-        }),
+        body: JSON.stringify(searchParams),
       });
 
       if (!response.ok) {
@@ -51,37 +39,20 @@ const SearchBar = ({ onSearch }) => {
       }
 
       const data = await response.json();
-      console.log('Raw API response:', data);
       
       if (data.error) {
         throw new Error(data.error);
       }
-      
-      // Navigate to results page with the prediction data
-      const searchParamsData = {
-        zipcode: searchParams.zipcode.trim(),
-        bedrooms: parseInt(searchParams.bedrooms) || 2,
-        bathrooms: parseInt(searchParams.bathrooms) || 1,
-        propertyType: searchParams.propertyType || 'SINGLE_FAMILY',
-        livingArea: parseInt(searchParams.livingArea) || 1000,
+
+      onSearch({
+        ...searchParams,
         predictedRent: data.predictedRent,
         predictedSalePrice: data.predictedSalePrice,
-        areaInfo: {
-          name: searchParams.zipcode,
-          fullAddress: `${searchParams.zipcode}, USA`
-        }
-      };
-      
-      console.log('Data being passed to results page:', searchParamsData);
-      
-      navigate('/results', {
-        state: {
-          searchParams: searchParamsData
-        }
+        coordinates: data.coordinates
       });
     } catch (error) {
       console.error('Error:', error);
-      alert(error.message || 'Error making prediction. Please try again.');
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -92,7 +63,7 @@ const SearchBar = ({ onSearch }) => {
       <div className="search-box">
         <h2>Property Price Predictor</h2>
         {error && <div className="error-message">{error}</div>}
-        <form onSubmit={handleSubmit} className="search-inputs">
+        <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Zipcode</label>
             <input
@@ -107,58 +78,52 @@ const SearchBar = ({ onSearch }) => {
 
           <div className="input-group">
             <label>Bedrooms</label>
-            <input
-              type="number"
+            <select
               name="bedrooms"
               value={searchParams.bedrooms}
               onChange={handleInputChange}
-              min="1"
               required
-            />
+            >
+              {[1, 2, 3, 4, 5].map(num => (
+                <option key={num} value={num}>{num}</option>
+              ))}
+            </select>
           </div>
 
           <div className="input-group">
             <label>Bathrooms</label>
-            <input
-              type="number"
+            <select
               name="bathrooms"
               value={searchParams.bathrooms}
               onChange={handleInputChange}
-              min="1"
-              step="0.5"
               required
-            />
+            >
+              {[1, 1.5, 2, 2.5, 3, 3.5, 4].map(num => (
+                <option key={num} value={num}>{num}</option>
+              ))}
+            </select>
           </div>
 
           <div className="input-group">
-            <label>Living Area (sqft)</label>
+            <label>Living Area (sq ft)</label>
             <input
               type="number"
               name="livingArea"
               value={searchParams.livingArea}
               onChange={handleInputChange}
-              min="100"
+              placeholder="Square footage"
+              min="500"
+              max="10000"
               required
             />
           </div>
 
-          <div className="input-group">
-            <label>Property Type</label>
-            <select
-              name="propertyType"
-              value={searchParams.propertyType}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="SINGLE_FAMILY">Single Family</option>
-              <option value="MULTI_FAMILY">Multi Family</option>
-              <option value="CONDO">Condo</option>
-              <option value="TOWNHOUSE">Townhouse</option>
-            </select>
-          </div>
-
-          <button type="submit" className="search-btn" disabled={isLoading}>
-            {isLoading ? 'Calculating...' : 'Get Predictions'}
+          <button 
+            type="submit" 
+            className="submit-button"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Calculating...' : 'Get Prediction'}
           </button>
         </form>
       </div>
@@ -166,4 +131,4 @@ const SearchBar = ({ onSearch }) => {
   );
 };
 
-export default SearchBar;
+export default SearchBar; 
