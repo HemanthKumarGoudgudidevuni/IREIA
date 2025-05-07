@@ -163,37 +163,35 @@ This section outlines the major files, scripts, and modules used across both bac
 ### 📁 Project Directory Structure
 
 IREIA/
-│
-├── app.py                         # Main Flask application entry point
-├── requirements.txt               # Backend Python dependencies
-│
+├── app.py                          # Main Flask application entry point  
+├── requirements.txt               # Backend Python dependencies  
+├── .env.ireia                     # Backend environment variables  
 ├── backend/
 │   └── property-price-prediction/
-│       └── property_price_predictor.py   # ML model logic for price prediction
-│
+│       └── property_price_predictor.py         # ML logic for property price prediction  
 ├── ml_models/
 │   └── price-prediction-model/
 │       └── xgboost/
-│           ├── xgboost_final_model.pkl   # Final trained XGBoost model
-│           └── xgboost_price_predictor.py# Inference logic using XGBoost
-│
+│           ├── xgboost_final_model.pkl         # Trained XGBoost model  
+│           └── xgboost_price_predictor.py      # XGBoost inference logic  
 ├── rental_prediction_app/
-│   ├── rental_model.pkl          # Trained rental prediction model
-│   ├── rental_model.py           # Logic for rental estimation
-│   ├── rental_scaler.pkl         # Scaler used during rental model training
-│   └── rental_feature_importance.png  # Visualization for rental features
-│
+│   ├── rental_model.pkl                        # Trained rental model  
+│   ├── rental_scaler.pkl                       # Scaler used during training  
+│   ├── rental_model.py                         # Rental prediction logic  
+│   └── rental_feature_importance.png           # Rental feature visualization  
 ├── my-real-estate-app/
-│   ├── public/                   # Public static files (favicon, index.html)
-│   ├── src/
-│   │   ├── components/           # Reusable UI components like Navbar, Footer
-│   │   ├── pages/                # Main pages: HomePage, SearchPage, PropertyPage
-│   │   ├── styles/               # CSS styles scoped to components/pages
-│   │   ├── utils/                # Helper utilities (e.g., maps.js for Google Maps)
-│   │   └── App.js                # Main React app component
-│   ├── .env                      # Contains frontend environment configs
-│   ├── package.json              # React project dependencies
-│   └── README.md                 # Project instructions
+│   ├── public/                                 # Static assets (index.html, favicon)  
+│   └── src/
+│       ├── components/                         # Reusable UI: Navbar, Footer, etc.  
+│       ├── pages/                              # Main pages: HomePage, SearchPage, PropertyPage  
+│       ├── styles/                             # CSS styles scoped to components/pages  
+│       ├── utils/
+│       │   └── maps.js                         # Google Maps logic and pins  
+│       ├── App.js                              # Main React component  
+│       ├── index.js                            # Entry point  
+│       └── .env                                # Frontend environment configs  
+├── package.json                                # React project dependencies  
+└── README.md                                   # Project documentation  
 
 ---
 
