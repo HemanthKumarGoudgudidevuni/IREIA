@@ -1,7 +1,7 @@
 # 🏡 IREIA – Intelligent Real Estate Investment Advisor
 
 ## 📌 Project Overview
-IREIA is an AI-powered real estate investment platform that helps users make smarter decisions by predicting future property prices and rental trends using machine learning. It integrates live property data via Realtor API-Realty In US and provides interactive visualizations including charts, maps, and investment scoring.
+IREIA is an AI-powered real estate investment platform that helps users make smarter decisions by predicting future property prices and rental trends using machine learning. It integrates live property data via Realty In US and provides interactive visualizations including charts, maps, and investment scoring.
 
 ---
 
@@ -17,7 +17,7 @@ IREIA is an AI-powered real estate investment platform that helps users make sma
 - 🏫 **Nearby Schools**: Automatically shows schools near the selected property using Google Places API.
 - 📸 **High-Resolution Images**: Image enhancement logic ensures better property visuals.
 - 🧾 **Detailed Property View**: Dedicated page per property with complete ML insights, images, and maps.
-- 🔄 **Live Data Integration**: Uses the Realtor API-Realty In US to fetch real-time property data dynamically.
+- 🔄 **Live Data Integration**: Uses the Realty In US to fetch real-time property data dynamically.
 
 ---
 
@@ -26,7 +26,7 @@ IREIA is an AI-powered real estate investment platform that helps users make sma
 ### 🔙 Backend
 - **Python** with **Flask** – for handling API requests and ML model predictions
 - **XGBoost** – machine learning model for price and rent forecasting
-- **Realtor API** – to fetch live property data
+- **Realty In US API** – to fetch live property data
 - **Google Places API** – to get nearby schools
 
 ### 🔛 Frontend
@@ -60,7 +60,7 @@ The IREIA system is built using a modular architecture consisting of three prima
   - `/search_property` – fetch and predict properties by location
   - `/predict_price` – ML-based price forecasting
   - `/predict_rent` – ML-based rental forecasting
-- Fetches data from **Realtor API** in real time
+- Fetches data from **Realty In US API** in real time
 - Deployed via **Render**
 
 ### 3. Machine Learning Module
@@ -74,7 +74,7 @@ The IREIA system is built using a modular architecture consisting of three prima
 ### 🔁 Data Flow
 1. User enters a location in the React UI
 2. Frontend sends a POST request to Flask backend
-3. Flask fetches property data from Realtor API
+3. Flask fetches property data from Realty In US API
 4. ML model runs predictions on property price & rent
 5. Results sent back to React frontend and rendered as charts, scores, and cards
 
@@ -93,7 +93,7 @@ To get started with the IREIA (Intelligent Real Estate Investment Advisor) platf
 - npm (Node Package Manager)
 - Git
 - API keys for:
-  - Realtor API (RapidAPI)
+  - Realty In US API (RapidAPI)
   - Google Maps JavaScript API
 
 ---
@@ -253,7 +253,7 @@ IREIA/
 ### 🔧 Notable Features & Logic
 
 - **Image Quality Optimization**:
-  - In `PropertyCard.js` and `PropertyPage.js`, we dynamically rewrite low-resolution image URLs from Realtor API to fetch high-res alternatives using suffix patterns (`-t.jpg → -o.jpg`, `-m.jpg → -mx.jpg`, etc.).
+  - In `PropertyCard.js` and `PropertyPage.js`, we dynamically rewrite low-resolution image URLs from Realty In US API to fetch high-res alternatives using suffix patterns (`-t.jpg → -o.jpg`, `-m.jpg → -mx.jpg`, etc.).
 
 - **Chart.js Integration**:
   - `PropertyPage.js` uses Chart.js to visualize future price and rent trends.
@@ -334,8 +334,8 @@ Click on any property card to view:
 ## 📚 Citations & References
 
 ### 🔌 APIs & Services Used
-- **Realtor.com API** – Live property listings, pricing, rental data  
-  🔗 https://rapidapi.com/apidojo/api/realtor
+- **Realty In US API** – Live property listings, pricing, rental data  
+  🔗 https://rapidapi.com/apidojo/api/Realty In US
 
 - **Google Maps JavaScript API** – Interactive map with location pins  
   🔗 https://developers.google.com/maps/documentation/javascript
