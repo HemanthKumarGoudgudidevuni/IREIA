@@ -423,6 +423,19 @@ MIT License (for academic use only)
 
 ---
 
-## 🤖 AI Assistance Disclosure
+## 🤖 AI Assistance Acknowledgment
 
-Portions of this documentation, including text structure, summaries, and formatting, were generated or refined using OpenAI’s ChatGPT to assist with clarity, consistency, and completeness. All content was reviewed and validated by the development team.
+Portions of this project were developed or enhanced using OpenAI’s ChatGPT to assist with clarity, structure, and efficiency. This includes both code and documentation components.
+
+### ✍️ Documentation
+- Project description, feature summaries, and setup instructions
+- Code documentation, user manual, and citations
+- Markdown formatting and README structure
+
+### 💻 Codebase
+- Flask API boilerplate and route logic
+- React component structure, state management, and styling
+- Machine learning pipeline setup and integration
+- Visualization logic (Chart.js, Google Maps, Circular Meters)
+
+All AI-generated or assisted content was **reviewed, tested, and refined** by the project team to ensure accuracy, originality, and alignment with academic integrity standards.
