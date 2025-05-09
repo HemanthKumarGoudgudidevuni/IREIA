@@ -420,3 +420,9 @@ MIT License (for academic use only)
 
 - 🔗 **Frontend (Netlify):** [https://681a84ffbdbadc81be5ff226--ireia3a.netlify.app/](https://681a84ffbdbadc81be5ff226--ireia3a.netlify.app/)
 - 🔗 **Backend (Render):** [https://ireia.onrender.com](https://ireia.onrender.com)
+
+---
+
+## 🤖 AI Assistance Disclosure
+
+Portions of this documentation, including text structure, summaries, and formatting, were generated or refined using OpenAI’s ChatGPT to assist with clarity, consistency, and completeness. All content was reviewed and validated by the development team.
